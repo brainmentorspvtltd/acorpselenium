@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import test.ScreenShotDemo;
+
 
 public class MMTTest {
 
@@ -21,23 +21,29 @@ public class MMTTest {
 		System.setProperty("webdriver.chrome.driver", "/Users/amit/Documents/selenium-things/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.makemytrip.com/");
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebDriverWait webwait = new WebDriverWait(driver, 30);
 		webwait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fromCity")));
 		driver.findElement(By.id("fromCity")).sendKeys("Delhi");
-		driver.findElement(By.cssSelector("#react-autowhatever-1-section-0-item-0 > div > div.calc60 > p.font14.appendBottom5.blackText")).click();
-		Thread.sleep(2000);
+		js.executeScript("document.querySelectorAll('.react-autosuggest__suggestions-list')[0].children[0].click()");
+		// document.querySelectorAll('.react-autosuggest__suggestions-list')[0].children[0].click();
+		//Thread.sleep(1000);
+		//driver.findElement(By.cssSelector("#react-autowhatever-1-section-0-item-0 > div > div.calc60 > p.font14.appendBottom5.blackText")).click();
+		Thread.sleep(3000);
 		WebElement city = driver.findElement(By.id("toCity"));
 		webwait.until(ExpectedConditions.visibilityOfElementLocated(By.id("toCity")));
 		
 		city.sendKeys("Mumbai");
 		//#react-autowhatever-1-section-0-item-1 > div > div.calc60 > p.font14.appendBottom5.blackText
-		driver.findElement(By.cssSelector("#react-autowhatever-1-section-0-item-0 > div > div.calc60 > p.font14.appendBottom5.blackText")).click();
+		//driver.findElement(By.cssSelector("#react-autowhatever-1-section-0-item-0 > div > div.calc60 > p.font14.appendBottom5.blackText")).click();
+		js.executeScript("document.querySelectorAll('.react-autosuggest__suggestions-list')[0].children[0].click()");
 		driver.findElement(By.cssSelector("#root > div > div.minContainer > div > div > div.fsw > div.fsw_inner > div:nth-child(4)")).click();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter the Day ");
-		int day = s.nextInt() - 1;
-		//int day = 24; // index 23
+		//System.out.println("Enter the Day ");
+		//int day = s.nextInt() - 1;
+		int day = 24; // index 23
 		js.executeScript("document.querySelectorAll('.DayPicker-Day')[28].click();");
 		driver.findElement(By.cssSelector("#root > div > div.minContainer > div > div > div.fsw > div.fsw_inner > div.fsw_inputBox.flightTravllers.inactiveWidget > label > p.blackText.font20.code")).click();
 		js.executeScript("document.querySelectorAll('.guestCounter')[0].children[2].click();");
@@ -87,7 +93,7 @@ public class MMTTest {
 		//driver.findElement(By.id("review-continue")).click();
 		//Thread.sleep(5000);
 		//js.executeScript("document.querySelector('#review-continue').click();");
-		ScreenShotDemo.takeScreenShot(driver);
+		//ScreenShotDemo.takeScreenShot(driver);
 		Thread.sleep(5000);
 		driver.quit();
 	}
