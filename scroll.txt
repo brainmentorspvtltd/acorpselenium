@@ -1,0 +1,8 @@
+// Approach-1 Scroll to the End
+
+js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+Approach-2 Scroll to the Element Present on Screen
+int y = driver.findElement(By.partialLinkText("Terms ")).getLocation().getY();
+js.executeScript("window.scrollTo(0, "+y+")");
+
