@@ -1,0 +1,8 @@
+
+driver.switchTo().alert().dismiss();  // Cancel Clicked
+
+driver.switchTo().alert().accept(); // Ok Clicked
+
+
+driver.switchTo().alert().getText();	
+
