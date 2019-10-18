@@ -1,0 +1,21 @@
+Approach - 1 
+WebDriverWait webwait = new WebDriverWait(driver, 30);
+		webwait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fromCity")));
+
+
+Approach-2
+Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			    .withTimeout(30, TimeUnit.SECONDS)
+			    .pollingEvery(5, TimeUnit.SECONDS)
+			    .ignoring(NoSuchElementException.class);
+
+
+WebElement term = wait.until(new Function<WebDriver, WebElement>() 
+//		{
+//		  public WebElement apply(WebDriver driver) {
+//		  return driver.findElement(By.partialLinkText("Terms & Condition"));
+//		}
+//		});
+
+term.click();
+term.sendKey(“”);
