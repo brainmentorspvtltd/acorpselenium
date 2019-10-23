@@ -12,12 +12,12 @@ import com.brainmentors.dto.User;
 import com.google.gson.Gson;
 
 public class JSONReader {
-	public static void readJSON() throws IOException {
-		System.out.println("Calling URL");
-		URL url= new URL("https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/mobiles.json");
+	public static ArrayList<User> readJSON() throws IOException {
+		//System.out.println("Calling URL");
+		URL url= new URL("https://raw.githubusercontent.com/brainmentorspvtltd/myserverdata/master/users.json");
 		URLConnection con = url.openConnection();
 		con.connect();
-		System.out.println("Connection Created...");
+		//System.out.println("Connection Created...");
 		InputStream is = con.getInputStream();
 		byte bytes[] = is.readAllBytes();
 		String json = new String (bytes);
@@ -26,8 +26,10 @@ public class JSONReader {
 		Gson gson = new Gson();
 		//gson.fromJson(json, User.class);
 		Map<String, ArrayList<User>> userMap = gson.fromJson(json, Map.class);
-		System.out.println("After Parse");
-		System.out.println(userMap);
+		//System.out.println("After Parse");
+		//System.out.println(userMap);
+		ArrayList<User> users = userMap.get("users");
+		return users;
 		
 		
 	}
@@ -37,7 +39,8 @@ public class JSONReader {
 		map.put("delhi", 30);
 		int temp = map.get("delhi");
 		try {
-			readJSON();
+			ArrayList<User> users = readJSON();
+			System.out.println("Users are "+users);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
