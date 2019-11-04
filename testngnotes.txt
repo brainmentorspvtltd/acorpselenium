@@ -1,0 +1,64 @@
+Creating Suite
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "Suite1">
+   <test name = "test1">
+      <classes>
+         <class name = "TestNGSimpleTest"/>
+      </classes>
+   </test>
+</suite>
+
+
+
+@Test(expectedExceptions = ArithmeticException.class)
+
+@Test(dependsOnMethods = { “testMethod2” })
+
+@Test(enabled = false)
+
+// Creating Group
+public class TestDemo4 {
+	@Test(groups = { "groupA", "groupB" })
+	   
+	   public void testG1() {
+	      System.out.println("TestGroups Called");
+	     
+	      Assert.assertTrue(10>2);
+	   }
+
+	   @Test(groups = { "groupA" })
+	   
+	   public void group1() {
+		   System.out.println("Group1 Called");
+		     
+		      Assert.assertTrue(10>200);
+	   }
+
+	   @Test(groups = { "groupB" })
+	   
+	   public void group2() {
+		   System.out.println("Group2 Called");
+		     
+		      Assert.assertTrue(10>2);
+	   }
+}
+
+<suite name = "Suite1">
+   <test name = "test1">
+   
+      <groups>
+         <run>
+            <include name = "functest" />
+         </run>
+      </groups>
+
+      <classes>
+         <class name = "GroupTestExample" />
+      </classes>
+   
+   </test>
+</suite>
+
+
