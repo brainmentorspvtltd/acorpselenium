@@ -1,0 +1,23 @@
+@Test
+   @Parameters("env")
+   public void parameterTest(String env) {
+      System.out.println("Parameterized value is : " +env);
+if(env.equals(“QCT”)){ // Reading DB from 10.10.2.20
+}
+Else{
+// Reading DB from 10.10.2.20 }
+   }
+
+
+
+<suite name = "Suite1">
+   <test name = "test1">
+   
+      <parameter name = “env” value=“QCT”/> 
+      
+      <classes>
+         <class name = "ParameterizedTest1" />
+      </classes>
+      
+   </test>
+</suite>
