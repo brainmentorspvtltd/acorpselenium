@@ -1,0 +1,18 @@
+@Test(dataProvider=“mydata”)
+    public void test1(String name,int age) {
+    {
+            }
+
+
+@DataProvider(name="mydata")
+    public Object[][] shareData(){
+// Read data from XLS and Store it in 2-D Array
+// Return the 2-d Array
+    return new Object[][] 
+    	{
+            { “Ram”, 21 },
+            { “Shyam”, 22 },
+            { “Sohan”, 24 }
+        };
+
+    }
